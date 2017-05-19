@@ -118,6 +118,43 @@
                                  @"Tina":@"#1E90FF",
                                  @"班尼":@"#FF4500"};
     [_bookArray addObject:bookModel4];
+    
+    
+    WXBookModel *bookModel5 = [[WXBookModel alloc] init];
+    bookModel5.bookName = @"哈姆雷特";
+    bookModel5.bookPath = [[NSBundle mainBundle] pathForResource:@"哈姆雷特" ofType:@"txt"];
+    bookModel5.headerDict = @{@"Guard 1":@"header_alwy",
+                              @"Guard 2":@"header_gj",
+                              @"Horatio":@"header_cz",
+                              @"Claudius":@"header_gj",
+                              @"Gertrude":@"header_mfla",
+                              @"Hamlet":@"header_tb",
+                              @"Horatio":@"header_wal",
+                              @"Ghost":@"header_xbsx",
+                              @"Ophelia":@"header_cz",
+                              @"Polonius":@"header_mfla",
+                              @"Rosencrantz":@"header_tb",
+                              @"Guildenstern":@"header_alwy",
+                              @"Player Queen":@"header_gj",
+                              @"Player King":@"header_wal",
+                              @"Laertes":@"header_xbsx"};
+    
+    bookModel5.nameColorDict = @{@"Guard 1":@"#FF00FF",
+                                 @"Guard 2":@"#DC143C",
+                                 @"Horatio":@"#3CB371",
+                                 @"Claudius":@"#DC143C",
+                                 @"Gertrude":@"#1E90FF",
+                                 @"Hamlet":@"#FF4500",
+                                 @"Horatio":@"#D2691E",
+                                 @"Ghost":@"#FF8C00",
+                                 @"Ophelia":@"#3CB371",
+                                 @"Polonius":@"#1E90FF",
+                                 @"Rosencrantz":@"#FF4500",
+                                 @"Guildenstern":@"#FF00FF",
+                                 @"Player Queen":@"#DC143C",
+                                 @"Player King":@"#3CB371",
+                                 @"Laertes":@"#DC143C"};
+    [_bookArray addObject:bookModel5];
 }
 
 - (NSString *)readBookWithIndex:(NSInteger)bookIndex
@@ -134,7 +171,6 @@
     NSString *content = [[NSString alloc] initWithContentsOfFile:filePath encoding:enc error:nil];
     
     content = [content stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceAndNewlineCharacterSet]];
-    content = [content stringByReplacingOccurrencesOfString:@" " withString:@""];
     content = [content stringByReplacingOccurrencesOfString:@"\r\n\r\n" withString:@"@@@"];
     content = [content stringByReplacingOccurrencesOfString:@"\r\n" withString:@"@@@"];
     

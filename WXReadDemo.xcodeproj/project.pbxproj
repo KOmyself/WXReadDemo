@@ -21,6 +21,7 @@
 		3052E30E1ECC546F00104C93 /* WXReadViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 3052E30D1ECC546F00104C93 /* WXReadViewController.m */; };
 		3052E3131ECC556300104C93 /* WXReadTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = 3052E3121ECC556300104C93 /* WXReadTextCell.m */; };
 		3052E3161ECC568E00104C93 /* WXReadViewModel.m in Sources */ = {isa = PBXBuildFile; fileRef = 3052E3151ECC568E00104C93 /* WXReadViewModel.m */; };
+		308110A91ECE9B9500A91880 /* 哈姆雷特.txt in Resources */ = {isa = PBXBuildFile; fileRef = 308110A81ECE9B9500A91880 /* 哈姆雷特.txt */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -49,6 +50,7 @@
 		3052E3121ECC556300104C93 /* WXReadTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXReadTextCell.m; sourceTree = "<group>"; };
 		3052E3141ECC568E00104C93 /* WXReadViewModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = WXReadViewModel.h; sourceTree = "<group>"; };
 		3052E3151ECC568E00104C93 /* WXReadViewModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = WXReadViewModel.m; sourceTree = "<group>"; };
+		308110A81ECE9B9500A91880 /* 哈姆雷特.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = "哈姆雷特.txt"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -73,6 +75,7 @@
 		301C1CAB1ECD421400DC40CB /* Resource */ = {
 			isa = PBXGroup;
 			children = (
+				308110A81ECE9B9500A91880 /* 哈姆雷特.txt */,
 				301C1CCF1ECDAA8500DC40CB /* 爱情公寓第六集(下).txt */,
 				301C1CCB1ECDA39900DC40CB /* 爱情公寓第六集(上).txt */,
 				301C1CC31ECD6B9A00DC40CB /* 人质.txt */,
@@ -222,6 +225,7 @@
 				301C1CCC1ECDA39900DC40CB /* 爱情公寓第六集(上).txt in Resources */,
 				301C1CC41ECD6B9A00DC40CB /* 人质.txt in Resources */,
 				3052E2FE1ECC534D00104C93 /* Assets.xcassets in Resources */,
+				308110A91ECE9B9500A91880 /* 哈姆雷特.txt in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
