@@ -1,0 +1,14 @@
+//
+//  WXPrefixHeader.pch
+//  WXReadDemo
+//
+//  Created by 王晓 on 2017/5/18.
+//  Copyright © 2017年 wangxiao. All rights reserved.
+//
+
+#ifndef WXPrefixHeader_pch
+#define WXPrefixHeader_pch
+
+#import "WXCommonDefine.h"
+
+#endif /* WXPrefixHeader_pch */
