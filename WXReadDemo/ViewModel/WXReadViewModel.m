@@ -178,10 +178,15 @@
     
     for (NSString *txtStr in tempArr) {
         
-        WXReadItemModel *model = [[WXReadItemModel alloc] initWithStr:txtStr];
-        model.nameColor = bookModel.nameColorDict[model.name];
-        model.headerUrl = bookModel.headerDict[model.name];
-        [_contentArray addObject:model];
+        NSString *tempStr = [txtStr stringByTrimmingCharactersInSet:[NSCharacterSet whitespaceCharacterSet]];
+        
+        if (tempStr.length > 0) {
+            
+            WXReadItemModel *model = [[WXReadItemModel alloc] initWithStr:txtStr];
+            model.nameColor = bookModel.nameColorDict[model.name];
+            model.headerUrl = bookModel.headerDict[model.name];
+            [_contentArray addObject:model];
+        }
     }
     
     return bookModel.bookName;
