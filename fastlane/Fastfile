@@ -1,45 +1,100 @@
-# Customise this file, documentation can be found here:
-# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
-# All available actions: https://docs.fastlane.tools/actions
-# can also be listed using the `fastlane actions` command
 
-# Change the syntax highlighting to Ruby
-# All lines starting with a # are ignored when running `fastlane`
-
-# If you want to automatically update fastlane if a new version is available:
-# update_fastlane
-
-# This is the minimum version number required.
-# Update this, if you use features of a newer version
-fastlane_version "2.36.0"
+fastlane_version "2.37.0"
 
 default_platform :ios
 
-def archive(path, name, scheme, method)
+# 工程信息
+APP_NAME = 'WXReadDemo'
+SCHEME_NAME = 'WXReadDemo'
+PROJECT_FILE_PATH = './WXReadDemo.xcodeproj'
+
+# 证书信息
+APPSTORE_IDENTIFIER = 'com.systoon.test'
+APPSTORE_CODESIGNING_IDENTITY = 'iPhone Distribution: hutong syswin (YQ3XSED2BZ)'
+
+ADHOC_IDENTIFIER = 'com.systoon.test'
+ADHOC_CODESIGNING_IDENTITY = 'iPhone Distribution: hutong syswin (YQ3XSED2BZ)'
+
+# Info.plist文件位置
+PLIST_FILE_PATH = './WXReadDemo/Info.plist'
+
+# 更新bundle信息
+def update_app_bundle(bundle)
+  
+    update_app_identifier(
+        xcodeproj: PROJECT_FILE_PATH,
+        plist_path: '#{PLIST_FILE_PATH}',
+        app_identifier: bundle
+    )
+  
+end
+
+# 更新版本号
+def prepare_version(options)
+
+    # 增加版本号
+    increment_version_number(
+
+        version_number: options[:version],
+        xcodeproj: PROJECT_FILE_PATH
+    )
+
+    # 增加build号  只能是整数和浮点数
+    increment_build_number(
+
+        build_number: 3,
+        xcodeproj: "#{PROJECT_FILE_PATH}"
+    )
+
+end
+
+# 设置Info_plist_value里的值
+def set_info_plist_value(path,key,value)
+
+  sh "/usr/libexec/PlistBuddy -c \"set :#{key} #{value}\" ../#{path}"
+    
+end
+
+# 设置渠道信息
+def set_channel_id(channelId)
+
+   set_info_plist_value(
+
+      "#{PLIST_FILE_PATH}",
+      "ChannelID",
+      "#{channelId}"
+   )
+
+end
+
+# 打包
+def generate_ipa(typePrefix,codesigningIdentity,exportMethod,options)
+    #say 'generate ipa'
+
+    #fullVersion = options[:version] + '.' + options[:build]
+    #channelId = options[:channel_id]
+
+    time = Time.new.strftime("%Y-%m-%d-%H:%M:%S")
 
     gym(
-
-        export_method: method,
-        scheme: scheme,
-        clean: true,
-        output_directory: path,
-        output_name: name,
-        configuration: 'Release',
-        include_symbols: false,
-        include_bitcode: true
-      )
+      scheme: SCHEME_NAME,
+      clean: true,
+      output_directory: './build/',
+      output_name: time,
+      configuration: 'Release',
+      codesigning_identity: "#{codesigningIdentity}",
+      include_symbols: 'true',
+      include_bitcode: 'true',
+      provisioning_profile_path: "./fastlane/provision/#{typePrefix}.mobileprovision",
+      archive_path: './build/',
+      export_method: "#{exportMethod}”
+    )
 end
 
 platform :ios do
 
   before_all do
     # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
-    
-    # 拉取最新的代码
-    # git_pull
-
-    # 更新最新的cocoapods库
-    # cocoapods
     
   end
 
@@ -48,45 +103,28 @@ platform :ios do
     scan
   end
 
-  desc "打包 type 1:appstore, 0: ad-hoc"
-  lane :archive do |options|
+  desc "打AdHoc包"
+  lane :AdHoc do |options|
 
-  		# 以下两个action来自fastlane-plugin-versioning
-  		# 第一个递增build
-  		# 第二个设置version
-  		# 如果你有多个target，就必须指定target的值，否则它会直接找找到的第一个plist修改
-  		# increament_build_number_in_plist(target:[target_name])
-  		# increament_version_number_in_plist(
+    typePrefix = 'TestAdHoc'
+    # set_channel_id(typePrefix)
+    prepare_version(options)
+    # update_app_bundle("#{ADHOC_IDENTIFIER}")
 
-  		#	target:[target_name],
-  		#	version_number:'1.0.0'
-  		# )
+    generate_ipa(typePrefix,"#{ADHOC_CODESIGNING_IDENTITY}","ad-hoc",options)
 
-  		# 用gym编译生成ipa
-        time = Time.new.strftime(%Y-%m-%d-%H:%M:%S)
-        path = "./fastlane/"
+  end
 
-        type = options[:type]
+  desc "打AppStore包"
+  lane :AppStore do |options|
 
-        if type == '1'
+    typePrefix = 'TestDistribution'
+    # set_channel_id(typePrefix)
+    prepare_version(options)
+    # update_app_bundle("#{APPSTORE_IDENTIFIER}")
 
-           name = time + "appstore"
-           archive(path,name,'WXReadDemo','appstore')
+    generate_ipa(typePrefix,"#{ADHOC_CODESIGNING_IDENTITY}","appstore",options)
 
-           # 上传appstore
-           # deliver
-
-        elsif type == '0'
-
-            name = time + "adhoc"
-            archive(path,name,'WXReadDemo','ad-hoc')
-
-            # 上传蒲公英
-            # system 'ipa distribute:pgyer -f ./' + name + '.ipa -u 5ff2b4bab6b2bbaa280b913db7722d02 -a 28ef5c87b2b05728ce0ddbe8bb31490d'
-
-        else
-            puts "type错误" 
-        end
   end
 
   # You can define as many lanes as you want
@@ -106,10 +144,3 @@ platform :ios do
     # )
   end
 end
-
-
-# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
-# All available actions: https://docs.fastlane.tools/actions
-
-# fastlane reports which actions are used. No personal data is recorded. 
-# Learn more at https://github.com/fastlane/fastlane#metrics
