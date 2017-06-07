@@ -1,0 +1,115 @@
+# Customise this file, documentation can be found here:
+# https://github.com/fastlane/fastlane/tree/master/fastlane/docs
+# All available actions: https://docs.fastlane.tools/actions
+# can also be listed using the `fastlane actions` command
+
+# Change the syntax highlighting to Ruby
+# All lines starting with a # are ignored when running `fastlane`
+
+# If you want to automatically update fastlane if a new version is available:
+# update_fastlane
+
+# This is the minimum version number required.
+# Update this, if you use features of a newer version
+fastlane_version "2.36.0"
+
+default_platform :ios
+
+def archive(path, name, scheme, method)
+
+    gym(
+
+        export_method: method,
+        scheme: scheme,
+        clean: true,
+        output_directory: path,
+        output_name: name,
+        configuration: 'Release',
+        include_symbols: false,
+        include_bitcode: true
+      )
+end
+
+platform :ios do
+
+  before_all do
+    # ENV["SLACK_URL"] = "https://hooks.slack.com/services/..."
+    
+    # 拉取最新的代码
+    # git_pull
+
+    # 更新最新的cocoapods库
+    # cocoapods
+    
+  end
+
+  desc "Runs all the tests"
+  lane :test do
+    scan
+  end
+
+  desc "打包 type 1:appstore, 0: ad-hoc"
+  lane :archive do |options|
+
+  		# 以下两个action来自fastlane-plugin-versioning
+  		# 第一个递增build
+  		# 第二个设置version
+  		# 如果你有多个target，就必须指定target的值，否则它会直接找找到的第一个plist修改
+  		# increament_build_number_in_plist(target:[target_name])
+  		# increament_version_number_in_plist(
+
+  		#	target:[target_name],
+  		#	version_number:'1.0.0'
+  		# )
+
+  		# 用gym编译生成ipa
+        time = Time.new.strftime(%Y-%m-%d-%H:%M:%S)
+        path = "./fastlane/"
+
+        type = options[:type]
+
+        if type == '1'
+
+           name = time + "appstore"
+           archive(path,name,'WXReadDemo','appstore')
+
+           # 上传appstore
+           # deliver
+
+        elsif type == '0'
+
+            name = time + "adhoc"
+            archive(path,name,'WXReadDemo','ad-hoc')
+
+            # 上传蒲公英
+            # system 'ipa distribute:pgyer -f ./' + name + '.ipa -u 5ff2b4bab6b2bbaa280b913db7722d02 -a 28ef5c87b2b05728ce0ddbe8bb31490d'
+
+        else
+            puts "type错误" 
+        end
+  end
+
+  # You can define as many lanes as you want
+
+  after_all do |lane|
+    # This block is called, only if the executed lane was successful
+
+    # slack(
+    #   message: "Successfully deployed new App Update."
+    # )
+  end
+
+  error do |lane, exception|
+    # slack(
+    #   message: exception.message,
+    #   success: false
+    # )
+  end
+end
+
+
+# More information about multiple platforms in fastlane: https://github.com/fastlane/fastlane/blob/master/fastlane/docs/Platforms.md
+# All available actions: https://docs.fastlane.tools/actions
+
+# fastlane reports which actions are used. No personal data is recorded. 
+# Learn more at https://github.com/fastlane/fastlane#metrics
