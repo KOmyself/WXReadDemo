@@ -191,8 +191,7 @@
 				TargetAttributes = {
 					3052E2ED1ECC534D00104C93 = {
 						CreatedOnToolsVersion = 8.3.2;
-						DevelopmentTeam = 62D4AF588L;
-						ProvisioningStyle = Automatic;
+						ProvisioningStyle = Manual;
 					};
 				};
 			};
