@@ -123,7 +123,7 @@ platform :ios do
     prepare_version(options)
     # update_app_bundle("#{APPSTORE_IDENTIFIER}")
 
-    generate_ipa(typePrefix,"#{ADHOC_CODESIGNING_IDENTITY}","appstore",options)
+    generate_ipa(typePrefix,"#{APPSTORE_CODESIGNING_IDENTITY}","app-store",options)
 
   end
 
