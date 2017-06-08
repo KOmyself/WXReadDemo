@@ -18,7 +18,7 @@ ADHOC_CODESIGNING_IDENTITY = 'iPhone Distribution: hutong syswin (YQ3XSED2BZ)'
 # Info.plist文件位置
 PLIST_FILE_PATH = './WXReadDemo/Info.plist'
 
-# 更新bundle信息
+# 更新bundle id
 def update_app_bundle(bundle)
   
     update_app_identifier(
@@ -42,8 +42,8 @@ def prepare_version(options)
     # 增加build号  只能是整数和浮点数
     increment_build_number(
 
-        build_number: 3,
-        xcodeproj: "#{PROJECT_FILE_PATH}"
+        build_number: options[:build],
+        xcodeproj: PROJECT_FILE_PATH
     )
 
 end
@@ -109,7 +109,7 @@ platform :ios do
     typePrefix = 'TestAdHoc'
     # set_channel_id(typePrefix)
     #prepare_version(options)
-    # update_app_bundle("#{ADHOC_IDENTIFIER}")
+    update_app_bundle("#{ADHOC_IDENTIFIER}")
 
     generate_ipa(typePrefix,"#{ADHOC_CODESIGNING_IDENTITY}","ad-hoc",options)
 
@@ -121,7 +121,7 @@ platform :ios do
     typePrefix = 'TestDistribution'
     # set_channel_id(typePrefix)
     prepare_version(options)
-    # update_app_bundle("#{APPSTORE_IDENTIFIER}")
+    update_app_bundle("#{APPSTORE_IDENTIFIER}")
 
     generate_ipa(typePrefix,"#{APPSTORE_CODESIGNING_IDENTITY}","app-store",options)
 
