@@ -83,7 +83,7 @@ def generate_ipa(typePrefix,codesigningIdentity,exportMethod,options)
       output_name: time,
       configuration: 'Release',
       codesigning_identity: "#{codesigningIdentity}",
-      include_symbols: 'true',
+      include_symbols: 'false',
       include_bitcode: 'true',
       provisioning_profile_path: "./fastlane/provision/#{typePrefix}.mobileprovision",
       archive_path: './build/',
@@ -108,7 +108,7 @@ platform :ios do
 
     typePrefix = 'TestAdHoc'
     # set_channel_id(typePrefix)
-    prepare_version(options)
+    #prepare_version(options)
     # update_app_bundle("#{ADHOC_IDENTIFIER}")
 
     generate_ipa(typePrefix,"#{ADHOC_CODESIGNING_IDENTITY}","ad-hoc",options)
