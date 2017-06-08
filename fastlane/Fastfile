@@ -121,6 +121,7 @@ platform :ios do
     # set_channel_id(typePrefix)
     prepare_version(options)
     update_app_bundle("#{ADHOC_IDENTIFIER}")
+    update_provision(typePrefix)
 
     generate_ipa(typePrefix,"#{ADHOC_CODESIGNING_IDENTITY}","ad-hoc",options)
 
@@ -133,6 +134,7 @@ platform :ios do
     # set_channel_id(typePrefix)
     prepare_version(options)
     update_app_bundle("#{APPSTORE_IDENTIFIER}")
+    update_provision(typePrefix)
 
     generate_ipa(typePrefix,"#{APPSTORE_CODESIGNING_IDENTITY}","app-store",options)
 
