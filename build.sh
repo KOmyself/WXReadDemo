@@ -6,7 +6,7 @@
 #
 
 versionNumber=$1 # 1.0.0
-buildNumber=$2 # 2000
+buildNumber=$(date +%Y%m%d%H%M%S) # 20170608172631
 
 rm -rf build
 
