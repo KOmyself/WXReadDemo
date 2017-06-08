@@ -6,7 +6,7 @@ default_platform :ios
 # 工程信息
 APP_NAME = 'WXReadDemo'
 SCHEME_NAME = 'WXReadDemo'
-PROJECT_FILE_PATH = './WXReadDemo.xcodeproj'
+PROJECT_FILE_PATH = 'WXReadDemo.xcodeproj'
 
 # 证书信息
 ADHOC_IDENTIFIER = 'com.systoon.test'
@@ -19,14 +19,14 @@ ENTERPRISE_IDENTIFIER = 'com.systoon.enterprise.jiaoyutong'
 ENTERPRISE_CODESIGNING_IDENTITY = 'iPhone Distribution: Beijing Syswin Internet Technology Co. Ltd.'
 
 # Info.plist文件位置
-PLIST_FILE_PATH = './WXReadDemo/Info.plist'
+PLIST_FILE_PATH = 'WXReadDemo/Info.plist'
 
 # 更新bundle id
 def update_app_bundle(bundle)
   
     update_app_identifier(
         xcodeproj: PROJECT_FILE_PATH,
-        plist_path: "WXReadDemo/Info.plist",
+        plist_path: PLIST_FILE_PATH,
         app_identifier: bundle
     )
   
