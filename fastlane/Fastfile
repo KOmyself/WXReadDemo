@@ -21,9 +21,9 @@ PLIST_FILE_PATH = './WXReadDemo/Info.plist'
 # 更新bundle id
 def update_app_bundle(bundle)
   
-    update_app_identifier(
+    update_info_plist(
         xcodeproj: PROJECT_FILE_PATH,
-        plist_path: '#{PLIST_FILE_PATH}',
+        plist_path: "#{PLIST_FILE_PATH}",
         app_identifier: bundle
     )
   
@@ -46,6 +46,17 @@ def prepare_version(options)
         xcodeproj: PROJECT_FILE_PATH
     )
 
+end
+
+# 修改provision file
+def update_provision(typePrefix)
+  
+   update_project_provisioning(
+
+       xcodeproj: PROJECT_FILE_PATH,
+       profile: "./fastlane/provision/#{typePrefix}.mobileprovision"
+   )
+  
 end
 
 # 设置Info_plist_value里的值
@@ -108,8 +119,8 @@ platform :ios do
 
     typePrefix = 'TestAdHoc'
     # set_channel_id(typePrefix)
-    #prepare_version(options)
-    update_app_bundle("#{ADHOC_IDENTIFIER}")
+    prepare_version(options)
+    #update_app_bundle("#{ADHOC_IDENTIFIER}")
 
     generate_ipa(typePrefix,"#{ADHOC_CODESIGNING_IDENTITY}","ad-hoc",options)
 
