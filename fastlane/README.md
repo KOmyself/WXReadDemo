@@ -35,14 +35,14 @@ xcode-select --install
 fastlane ios test
 ```
 Runs all the tests
-### ios AdHoc
+### ios Archive_AdHoc
 ```
-fastlane ios AdHoc
+fastlane ios Archive_AdHoc
 ```
 打AdHoc包
-### ios AppStore
+### ios Archive_AppStore
 ```
-fastlane ios AppStore
+fastlane ios Archive_AppStore
 ```
 打AppStore包
 

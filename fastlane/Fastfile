@@ -21,9 +21,9 @@ PLIST_FILE_PATH = './WXReadDemo/Info.plist'
 # 更新bundle id
 def update_app_bundle(bundle)
   
-    update_info_plist(
+    update_app_identifier(
         xcodeproj: PROJECT_FILE_PATH,
-        plist_path: "#{PLIST_FILE_PATH}",
+        plist_path: "WXReadDemo/Info.plist",
         app_identifier: bundle
     )
   
@@ -115,7 +115,7 @@ platform :ios do
   end
 
   desc "打AdHoc包"
-  lane :AdHoc do |options|
+  lane :Archive_AdHoc do |options|
 
     typePrefix = 'TestAdHoc'
     # set_channel_id(typePrefix)
@@ -128,7 +128,7 @@ platform :ios do
   end
 
   desc "打AppStore包"
-  lane :AppStore do |options|
+  lane :Archive_AppStore do |options|
 
     typePrefix = 'TestDistribution'
     # set_channel_id(typePrefix)
