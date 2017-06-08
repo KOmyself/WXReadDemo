@@ -9,11 +9,14 @@ SCHEME_NAME = 'WXReadDemo'
 PROJECT_FILE_PATH = './WXReadDemo.xcodeproj'
 
 # 证书信息
+ADHOC_IDENTIFIER = 'com.systoon.test'
+ADHOC_CODESIGNING_IDENTITY = 'iPhone Distribution: hutong syswin (YQ3XSED2BZ)'
+
 APPSTORE_IDENTIFIER = 'com.systoon.test'
 APPSTORE_CODESIGNING_IDENTITY = 'iPhone Distribution: hutong syswin (YQ3XSED2BZ)'
 
-ADHOC_IDENTIFIER = 'com.systoon.test'
-ADHOC_CODESIGNING_IDENTITY = 'iPhone Distribution: hutong syswin (YQ3XSED2BZ)'
+ENTERPRISE_IDENTIFIER = 'com.systoon.enterprise.jiaoyutong'
+ENTERPRISE_CODESIGNING_IDENTITY = 'iPhone Distribution: Beijing Syswin Internet Technology Co. Ltd.'
 
 # Info.plist文件位置
 PLIST_FILE_PATH = './WXReadDemo/Info.plist'
@@ -137,6 +140,18 @@ platform :ios do
     update_provision(typePrefix)
 
     generate_ipa(typePrefix,"#{APPSTORE_CODESIGNING_IDENTITY}","app-store",options)
+
+  end
+
+  desc "打企业包"
+  lane :Archive_Enterprise do |options|
+
+    typePrefix = 'TestEnterprise'
+    prepare_version(options)
+    update_app_bundle("#{ENTERPRISE_IDENTIFIER}")
+    update_provision(typePrefix)
+
+    generate_ipa(typePrefix,"#{ENTERPRISE_CODESIGNING_IDENTITY}","enterprise",options)
 
   end
 

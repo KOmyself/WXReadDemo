@@ -10,8 +10,8 @@ buildNumber=$2 # 2000
 
 rm -rf build
 
-#basicLanes="Archive_AdHoc Archive_AppStore"
-basicLanes="Archive_AdHoc"
+#basicLanes="Archive_AdHoc Archive_AppStore Archive_Enterprise"
+basicLanes="Archive_Enterprise"
 for laneName in $basicLanes
 do
 fastlane $laneName version:$versionNumber build:$buildNumber

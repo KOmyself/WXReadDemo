@@ -361,9 +361,9 @@
 				INFOPLIST_FILE = WXReadDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.systoon.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.systoon.enterprise.jiaoyutong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c9ed361b-d86c-47e1-aa01-909bebefa8b5";
+				PROVISIONING_PROFILE = "482b7b6b-918a-4c2a-85d7-fd98ac2aa8ed";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
@@ -379,9 +379,9 @@
 				INFOPLIST_FILE = WXReadDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.systoon.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.systoon.enterprise.jiaoyutong;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c9ed361b-d86c-47e1-aa01-909bebefa8b5";
+				PROVISIONING_PROFILE = "482b7b6b-918a-4c2a-85d7-fd98ac2aa8ed";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;

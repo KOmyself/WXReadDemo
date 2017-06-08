@@ -45,6 +45,11 @@ fastlane ios Archive_AdHoc
 fastlane ios Archive_AppStore
 ```
 打AppStore包
+### ios Archive_Enterprise
+```
+fastlane ios Archive_Enterprise
+```
+打企业包
 
 ----
 
