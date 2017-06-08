@@ -192,7 +192,7 @@
 					3052E2ED1ECC534D00104C93 = {
 						CreatedOnToolsVersion = 8.3.2;
 						DevelopmentTeam = YQ3XSED2BZ;
-						ProvisioningStyle = Manual;
+						ProvisioningStyle = Automatic;
 					};
 				};
 			};
@@ -356,16 +356,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Developer: hutong syswin (2PLJ8TG44C)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer: hutong syswin (2PLJ8TG44C)";
-				DEVELOPMENT_TEAM = YQ3XSED2BZ;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = WXReadDemo/WXPrefixHeader.pch;
 				INFOPLIST_FILE = WXReadDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.systoon.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c2fa6d03-59a4-4ee3-9477-bc11d8a5eefc";
-				PROVISIONING_PROFILE_SPECIFIER = TestDevelopment;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -374,16 +374,16 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_IDENTITY = "iPhone Distribution: hutong syswin (YQ3XSED2BZ)";
-				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Distribution: hutong syswin (YQ3XSED2BZ)";
-				DEVELOPMENT_TEAM = YQ3XSED2BZ;
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				GCC_PREFIX_HEADER = WXReadDemo/WXPrefixHeader.pch;
 				INFOPLIST_FILE = WXReadDemo/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
-				PRODUCT_BUNDLE_IDENTIFIER = com.systoon.test;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sy;
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				PROVISIONING_PROFILE = "c9ed361b-d86c-47e1-aa01-909bebefa8b5";
-				PROVISIONING_PROFILE_SPECIFIER = TestAdHoc;
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};
