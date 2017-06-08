@@ -120,7 +120,7 @@ platform :ios do
     typePrefix = 'TestAdHoc'
     # set_channel_id(typePrefix)
     prepare_version(options)
-    #update_app_bundle("#{ADHOC_IDENTIFIER}")
+    update_app_bundle("#{ADHOC_IDENTIFIER}")
 
     generate_ipa(typePrefix,"#{ADHOC_CODESIGNING_IDENTITY}","ad-hoc",options)
 
